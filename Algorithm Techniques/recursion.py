@@ -43,6 +43,33 @@ def fibonacci(x):
         return 1
     return fibonacci(x-1) + fibonacci(x-2)
 
+def sort_(nums: list, low, high):
+    mid =  (low+high) // 2
+    if high <= low:
+        return [nums[mid]]
+
+    first_half = sort_(nums, low, mid)
+    second_half = sort_(nums, mid+1, high)
+
+    return merge(first_half, second_half)
+    
+def merge(list1, list2):
+    merged = list()
+    p1, p2 = 0, 0
+    while p1 < len(list1) and p2 < len(list2):
+        if list1[p1] <= list2[p2]:
+            merged.append(list1[p1])
+            p1 += 1
+        elif list2[p2] < list1[p1]:
+            merged.append(list2[p2])
+            p2 += 1
+    if p1 == len(list1):
+        merged.extend(list2[p2:])
+    if p2 == len(list2):
+        merged.extend(list1[p1:])
+
+    return merged
+
 def main():
     #max number
     # nums = [1,2,3,4,5,6,6]
@@ -64,6 +91,9 @@ def main():
     #fibonacii
     # ans = fibonacci(2)
     # print(ans)
+
+    # l1 = [1,3,4,0,2,-5,6,-1,7,99]
+    # print(sort_(l1, 0, len(l1)-1))
 
 if __name__ == "__main__":
     main()
