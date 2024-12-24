@@ -71,6 +71,7 @@ def merge(list1, list2):
     return merged
 
 def main():
+    pass
     #max number
     # nums = [1,2,3,4,5,6,6]
     #ans = find_max(nums)
