@@ -16,3 +16,6 @@ if __name__ == "__main__":
     nums = list(map(int, input().split(" ")))
     
     print(increasing_money(nums))
+
+# TC: O(N)
+# SC: O(1)

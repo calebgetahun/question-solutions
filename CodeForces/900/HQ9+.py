@@ -8,3 +8,6 @@ def hq9plus(s: str):
 if __name__ == "__main__":
     command = input()
     print(hq9plus(command))
+
+# TC: O(N)
+# SC: O(1)
