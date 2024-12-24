@@ -47,3 +47,5 @@ if __name__ == "__main__":
     sol = Solution()
     print_linked_list(sol.mergeTwoLists(list1, list2))
     
+# TC: O(n + m) where n = number of nodes in list1 and m = number of nodes in list2
+# SC: O(1)
