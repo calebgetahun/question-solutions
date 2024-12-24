@@ -13,3 +13,6 @@ if __name__ == "__main__":
             curr += 1
     
     print("".join(line))
+
+# TC: O(N)
+# SC: O(1)

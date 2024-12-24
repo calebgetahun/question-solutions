@@ -18,3 +18,6 @@ if __name__ == "__main__":
     values.sort()
 
     print(twins(values))
+
+# TC: O(NlogN) because of sorting at beginning
+# SC: O(N) also because of sorting

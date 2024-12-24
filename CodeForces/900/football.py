@@ -26,3 +26,5 @@ if __name__ == "__main__":
     n = input()
     print(football(n))
     
+# TC: O(N)
+# SC: O(1)

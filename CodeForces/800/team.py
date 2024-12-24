@@ -7,3 +7,6 @@ if __name__ == "__main__":
             solved += 1
         
     print(solved)
+
+# TC: O(N)
+# SC: O(1)

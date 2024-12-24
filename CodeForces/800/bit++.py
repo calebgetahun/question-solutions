@@ -10,3 +10,6 @@ if __name__ == "__main__":
     for i in range(n):
         solution += eval_operation(input())
     print(solution)
+
+# TC: O(N) for N operations
+# SC: O(1)

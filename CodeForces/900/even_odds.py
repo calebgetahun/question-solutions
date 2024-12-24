@@ -7,3 +7,6 @@ def even_odds(k, n):
 if __name__ == "__main__":
     n, k = map(int, input().split(" "))
     print(even_odds(k, n))
+
+# TC: O(1)
+# SC: O(1)

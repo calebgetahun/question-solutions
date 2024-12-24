@@ -7,3 +7,6 @@ def calculate_function(n):
 if __name__ == "__main__":
     n = int(input())
     print(calculate_function(n))
+
+# TC: O(1)
+# SC: O(1)

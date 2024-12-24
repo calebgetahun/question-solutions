@@ -7,3 +7,6 @@ if __name__ == "__main__":
             diff = abs(i-2) + abs(int(col)-2)
             print(diff)
             break
+
+# TC: O(N^2) worst case assuming N is the size in the NxN matrix and we must read through entire matrix
+# SC: O(1)

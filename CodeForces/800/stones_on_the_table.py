@@ -6,3 +6,6 @@ if __name__ == "__main__":
         if stones[i] == stones[i+1]:
             removed += 1
     print(removed)
+
+# TC: O(N)
+# SC: O(1)

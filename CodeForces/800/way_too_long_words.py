@@ -7,6 +7,9 @@ def way_too_long_words(word):
         
 if __name__ == "__main__":
     n = int(input())
-    for i in range(n):
+    for _ in range(n):
         way_too_long_words(input())
+
+# TC: O(1)
+# SC: O(log base 10 of N) since our auxillary array may grow depending on the amount of characters between the first and last character by a factor of 10
 

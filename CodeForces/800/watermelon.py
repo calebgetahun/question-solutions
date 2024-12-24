@@ -5,3 +5,5 @@ if __name__ == "__main__":
     else:
         print("NO")
 
+# TC: O(1)
+# SC: O(1)
