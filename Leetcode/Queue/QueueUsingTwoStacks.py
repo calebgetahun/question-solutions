@@ -43,4 +43,4 @@ if __name__ == "__main__":
     print(ans)
 
 # TC: O(1) For Push, O(1) For Peek, O(1) Amortized For Pop, O(1) For Empty
-# SC: O(N) where N is the amount of 
+# SC: O(N) where N is the amount of numbers
