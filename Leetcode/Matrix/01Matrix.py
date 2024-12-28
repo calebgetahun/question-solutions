@@ -33,6 +33,34 @@ class BruteForceSolution:
                     else:
                         q.append((new_row, new_col, curr[2] + 1))
 
+class BFSOptimized():
+    def updateMatrix(self, mat: list[list[int]]) -> list[list[int]]:
+        m, n = len(mat), len(mat[0])
+        q = deque()
+
+        #add all 0s to queue to perform bfs on later
+        for i in range(m):
+            for j in range(n):
+                if mat[i][j] == 0:
+                    q.append((i, j))
+                else:
+                    mat[i][j] = -1
+        
+        neighbors = [[1, 0], [-1, 0], [0, 1], [0, -1]]
+        
+        while q:
+            row, col = q.popleft()
+
+            for coord in neighbors:
+                new_row, new_col = row + coord[0], col + coord[1]
+                if new_row >= 0 and new_row < m and new_col >= 0 and new_col < n:
+                    if mat[new_row][new_col] == -1: #not processed yet
+                        mat[new_row][new_col] = mat[row][col] + 1
+                        q.append((new_row, new_col))
+        
+        return mat
+
+
 class DPSolution:
     def updateMatrix(self, mat: list[list[int]]) -> list[list[int]]:
         m, n = len(mat), len(mat[0])
@@ -67,9 +95,16 @@ if __name__ == "__main__":
          [0, 1, 0],
          [1, 1, 1]]
 
-    sol_dp = DPSolution()
-    sol_mat_dp = sol_dp.updateMatrix(b)
-    print(sol_mat_dp)
+    brute_force = BFSOptimized()
+    c = [[0,1,0,1,1],[1,1,0,0,1],[0,0,0,1,0],[1,0,1,1,1],[1,0,0,0,1]]
 
-# TC: O(n + m)
-# SC: O(1)
+    sol_c = brute_force.updateMatrix(c)
+    for row in sol_c:
+        print(row)
+
+    # sol_dp = DPSolution()
+    # sol_mat_dp = sol_dp.updateMatrix(b)
+    # print(sol_mat_dp)
+
+# TC: O(n * m)
+# SC: O(1) for DP O(n * m) for BFS
