@@ -1,5 +1,6 @@
 from collections import deque
 
+#brute force performing bfs on each node and continuing onwards (Memory limit exceeded)
 class BruteForceSolution:
     def updateMatrix(self, mat: list[list[int]]) -> list[list[int]]:
         m = len(mat)
@@ -32,12 +33,32 @@ class BruteForceSolution:
                     else:
                         q.append((new_row, new_col, curr[2] + 1))
 
-    class Solution:
-        def updateMatrix(self, mat: list[list[int]]) -> list[list[int]]:
-            pass
+class DPSolution:
+    def updateMatrix(self, mat: list[list[int]]) -> list[list[int]]:
+        m, n = len(mat), len(mat[0])
+        for i in range(m):
+            for j in range(n):
+                if mat[i][j] > 0:
+                    top = left = float('inf')
+                    if i > 0:
+                        top = mat[i-1][j]
+                    if j > 0:
+                        left = mat[i][j-1]
+                    mat[i][j] = min(top + 1, left + 1)
+
+        for i in range(m-1, -1, -1):
+            for j in range(n-1, -1, -1):
+                if mat[i][j] > 0:
+                    bottom = right = float('inf')
+                    if i < m-1:
+                        bottom = mat[i+1][j]
+                    if j < n-1:
+                        right = mat[i][j+1]
+                    mat[i][j] = min(mat[i][j], bottom + 1, right + 1)
+
+        return mat
 
 if __name__ == "__main__":
-    sol = BruteForceSolution()
     a = [[0, 0, 0],
          [0, 1, 0],
          [0, 0, 0]]
@@ -46,6 +67,9 @@ if __name__ == "__main__":
          [0, 1, 0],
          [1, 1, 1]]
 
-    sol_matrix = sol.updateMatrix(b)
-    for row in sol_matrix:
-        print(row)
+    sol_dp = DPSolution()
+    sol_mat_dp = sol_dp.updateMatrix(b)
+    print(sol_mat_dp)
+
+# TC: O(n + m)
+# SC: O(1)
