@@ -32,6 +32,10 @@ class BruteForceSolution:
                     else:
                         q.append((new_row, new_col, curr[2] + 1))
 
+    class Solution:
+        def updateMatrix(self, mat: list[list[int]]) -> list[list[int]]:
+            pass
+
 if __name__ == "__main__":
     sol = BruteForceSolution()
     a = [[0, 0, 0],
