@@ -45,3 +45,6 @@ if __name__ == "__main__":
 
     root.right.right.right = TreeNode(5)
     print(sol.isBalanced(root))
+
+# TC: O(N)
+# SC: O(N)
