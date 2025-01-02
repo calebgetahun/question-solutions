@@ -3,12 +3,17 @@ import heapq
 class Solution:
     def kClosest(self, points: list[list[int]], k: int) -> list[list[int]]:
         dist_heap = []
+
         for point in points:
             dist = (point[0]**2 + point[1]**2)**0.5
-            heapq.heappush(dist_heap, (dist, point))
+            dist_heap.append((dist, point))
+
+        heapq.heapify(dist_heap)
         final = []
-        for i in range(k):
-            final.append(heapq.heappop(dist_heap)[1])
+
+        for _ in range(k):
+            res = heapq.heappop(dist_heap)[1]
+            final.append(res)
         return final
 
 if __name__ == "__main__":
@@ -17,5 +22,5 @@ if __name__ == "__main__":
     k = 2
     print(sol.kClosest(points, k))
 
-# TC: O(NlogK)
+# TC: O(KlogN)
 # SC: O(N)
