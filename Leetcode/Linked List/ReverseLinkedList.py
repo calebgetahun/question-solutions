@@ -22,6 +22,16 @@ class Solution:
 
         return prev
 
+    def reverseListRecursive(self, head: Optional[ListNode]):
+        if not head or not head.next:
+            return head
+
+        reverse = self.reverseListRecursive(head.next)
+        head.next.next = head
+        head.next = None
+        
+        return reverse
+
 if __name__ == "__main__":
     sol = Solution()
     linked_list = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5, ListNode(6))))))
@@ -31,7 +41,7 @@ if __name__ == "__main__":
         head = head.next
     print()
     
-    reversed_list = sol.reverseList(linked_list)
+    reversed_list = sol.reverseListRecursive(linked_list)
     head = reversed_list
 
     while head:
@@ -39,4 +49,4 @@ if __name__ == "__main__":
         head = head.next
 
 # TC: O(N)
-# SC: O(1)
+# SC: O(1), O(N) if recursive for call stack
