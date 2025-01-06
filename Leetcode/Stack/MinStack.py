@@ -45,3 +45,6 @@ if __name__ == "__main__":
     print(min_stack.getMin())
     min_stack.pop()
     print(min_stack.getMin())
+
+# TC: O(1) for push, pop, top, and getMin operations
+# SC: O(N) to hold stack element minimum pairs as well as the actual minimum
