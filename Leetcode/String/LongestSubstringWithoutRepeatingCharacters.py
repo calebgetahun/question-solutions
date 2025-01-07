@@ -20,7 +20,7 @@ class Solution:
 
 if __name__ == "__main__":
     sol = Solution()
-    test_strings = ["abcabcbb", "bbbbb", "pwwkek"]
+    test_strings = ["abcabcbb", "bbbbb", "pwwkek", "aaaaaaaa"]
     for s in test_strings:
         print(sol.lengthOfLongestSubstring(s))
 
