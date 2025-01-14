@@ -22,5 +22,28 @@ class Solution:
             curr_interval = merged_intervals[-1]
         return merged_intervals
     
+
+    def insertConstantSpace(self,  intervals: list[list[int]], newInterval: list[int]):
+        merged = []
+        for i in range(len(intervals)):
+            if newInterval[1] < intervals[i][0]:
+                merged.append(newInterval)
+                merged.extend(intervals[i:])
+                return merged
+            elif newInterval[0] > intervals[i][1]:
+                merged.append(intervals[i])
+            else:
+                newInterval = [min(intervals[i][0], newInterval[0]), max(intervals[i][1], newInterval[1])]
+        merged.append(newInterval)
+        return merged
+    
+if __name__ == "__main__":
+    sol = Solution()
+    intervals = [[1, 3], [4, 6], [7, 8]]
+
+    new_interval = [2, 3]
+    print(sol.insert(intervals, new_interval))
+    print(sol.insertConstantSpace(intervals, new_interval))
+
 # TC: O(N)
 # SC: O(N) for output array, O(1) if output array not counted
