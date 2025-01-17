@@ -34,7 +34,7 @@ if __name__ == "__main__":
     tree = TreeNode(4, TreeNode(2, TreeNode(1), TreeNode(3)), TreeNode(7))
     insert = 5
     sol.insertIntoBST(tree, insert)
-    print(tree.right.left.val)
+    print(tree.right.left.val)    
 
 # TC: O(logN) in a balanced tree aka the height of the tree
 # SC: O(1)

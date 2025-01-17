@@ -1,0 +1,17 @@
+Topic list
+
+Math
+greedy
+constructive/raw implementation
+brute force/searching
+sorting (use library function)
+strings
+number theory - floor, ceil, modulo
+Basic time complexity
+
+
+number theory - divisors, factorization
+language specific library/STL
+binary searching
+two pointers
+binary + bitwise operations/stuff
