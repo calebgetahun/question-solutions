@@ -27,6 +27,9 @@ class Solution:
             if values[i] <= values[i-1]:
                 return False
         return True
+
+    # TC: O(N) where N is the number of nodes in our tree
+    # SC: O(N + h) = O(N) since we store all our nodes values in a list for comparison
     
     def isValidBSTUsingRanges(self, root: Optional[TreeNode]) -> bool:
         def helper(root, left, right):
@@ -43,7 +46,9 @@ class Solution:
 
         left, right = float('-inf'), float('inf')
         return helper(root, left, right)
-    
+
+    # TC: O(N) where N is the number of nodes in our tree
+    # SC: O(h) where h is the height of the tree to hold our recursive calls. Could be N given our tree is super unbalanced (ie. our tree is essentially a linked list)
 
 if __name__ == "__main__":
     sol = Solution()
