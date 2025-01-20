@@ -43,3 +43,6 @@ if __name__ == "__main__":
     sol = Solution()
     s, t = "ADOBECODEBANC", "ABC"
     print(sol.minWindow(s, t))
+
+# TC: O(M + N), where M is the length of the string s
+# SC: O(M + N), where M, N are the lengths of s and t respectively
