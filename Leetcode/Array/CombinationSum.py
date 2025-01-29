@@ -14,5 +14,35 @@ class Solution:
 
         return dp[target]
 
-    # TC: O(T * 2^T)
-    # SC: O(T * 2^T)
+# TC: O(N ^ T)
+# SC: O(T * 2^T)
+
+    def combinationSumBackTracking(self, candidates: List[int], target: int) -> List[List[int]]:
+        res = []
+
+        def dfs(i, curr, curr_sum):
+            if curr_sum == target:
+                res.append(curr[:])
+                return
+
+            if curr_sum > target or i >= len(candidates):
+                return
+
+            curr.append(candidates[i])
+            dfs(i, curr, curr_sum + candidates[i])
+            curr.pop()
+            dfs(i+1, curr, curr_sum)
+
+        dfs(0, [], 0)
+
+        return res
+    
+# TC: O(N ^ T)
+# SC: O(T), since our recursion depth can take up T spaces 
+
+if __name__ == "__main__":
+    sol = Solution()
+    arr, target = [2,3,6,7], 7
+
+    print(sol.combinationSum(arr, target))
+    print(sol.combinationSumBackTracking(arr, target))
