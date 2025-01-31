@@ -27,3 +27,6 @@ if __name__ == "__main__":
     sol = Solution()
     nums = [1,2,3]
     print(sol.permute(nums))
+
+# TC: O(N * N!)
+# SC: O(N)
