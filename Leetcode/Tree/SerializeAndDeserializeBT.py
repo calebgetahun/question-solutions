@@ -5,7 +5,44 @@ class TreeNode(object):
         self.left = left
         self.right = right
 
-class Codec:
+class CodecRecursively:
+    def serializeRec(self, root) -> str:
+        #basically a preorder traversal
+        def dfs(node, res):
+            if not node:
+                res.append("None")
+                return
+            
+            res.append(str(node.val))
+            dfs(node.left, res)
+            dfs(node.right, res)
+
+        result = []
+        dfs(root, result)
+        return ",".join(result)            
+
+    def deserializeRec(self, data) -> TreeNode:
+        data_split = data.split(",")
+
+        def dfs(index):
+            if index >= len(data_split) or data_split[index] == "None":
+                return None, index
+            
+            root = TreeNode(int(data_split[index]))
+
+            left_node, new_index = dfs(index+1)
+            root.left = left_node
+
+            right_node, new_index = dfs(new_index+1)
+            root.right = right_node
+
+            return root, new_index
+        
+        root, _ = dfs(0)
+
+        return root
+
+class CodecIteratively:
 
     def serializeLevelOrder(self, root):
         """Encodes a tree to a single string.
@@ -83,11 +120,18 @@ def printLevelOrderTraversal(root):
 
 if __name__ == "__main__":
     tree = TreeNode(1, TreeNode(2, None, TreeNode(3, TreeNode(4), TreeNode(5))))
-    ser = Codec()
-    des = Codec()
+    tree_2 = TreeNode(1, TreeNode(2, None, TreeNode(3, TreeNode(4), TreeNode(5))))
+    ser_iter = CodecIteratively()
+    des_iter = CodecIteratively()
+
+    ser_rec = CodecRecursively()
+    des_rec = CodecRecursively()
     
-    serialized_deserialized = des.deserializeLevelOrder(ser.serializeLevelOrder(tree))
-    print(printLevelOrderTraversal(tree) == printLevelOrderTraversal(serialized_deserialized))
+    serialized_deserialized_iter = des_iter.deserializeLevelOrder(ser_iter.serializeLevelOrder(tree))
+    serialized_deserialized_rec = des_rec.deserializeRec(ser_rec.serializeRec(tree_2))
+
+    print(printLevelOrderTraversal(tree) == printLevelOrderTraversal(serialized_deserialized_iter))
+    print(printLevelOrderTraversal(tree) == printLevelOrderTraversal(serialized_deserialized_rec))
 
 # TC: O(N)
 # SC: O(N)
