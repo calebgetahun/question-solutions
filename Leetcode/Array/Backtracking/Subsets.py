@@ -21,5 +21,5 @@ if __name__ == "__main__":
     arr = [1,2,3]
     print(sol.subsets(arr))
 
-# TC: O(2^N)
-# SC: O(2^N)
+# TC: O(N * 2^N), since we have N amount of work each step to copy each subset into our output array and 2^N total subsets
+# SC: O(N), not counting output array, as we use curr to maintain an intermediate list
