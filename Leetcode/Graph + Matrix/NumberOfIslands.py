@@ -2,6 +2,31 @@ from collections import deque
 from typing import List
 
 class Solution:
+    def numIslandsDFSMaintainInput(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+
+        def dfs(row, col, visited):
+            if row < 0 or col < 0 or row >= m or col >= n or (row, col) in visited or grid[row][col] != "1":
+                return
+            
+            visited.add((row, col))
+
+            dfs(row+1, col, visited)
+            dfs(row-1, col, visited)
+            dfs(row, col+1, visited)
+            dfs(row, col-1, visited)
+        
+        seen = set()
+        islands = 0
+
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == "1" and (i, j) not in seen:
+                    dfs(i, j, seen)
+                    islands += 1
+
+        return islands
+
     def numIslandsDFS(self, grid: List[List[int]]) -> int:
         m, n = len(grid), len(grid[0])
 
@@ -97,7 +122,7 @@ if __name__ == "__main__":
             ["1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"],
             ["1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1","1"]]
     
-    print(sol.numIslandsBFS(grid) == sol.numIslandsDFS(grid_2))
+    print(sol.numIslandsDFSMaintainInput(grid) == sol.numIslandsBFS(grid) == sol.numIslandsDFS(grid_2))
 
 # TC: O(M * N)
 # SC: O(M * N)
