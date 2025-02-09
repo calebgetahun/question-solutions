@@ -7,7 +7,6 @@ class Node:
         self.next = next
         self.random = random
 
-
 class Solution:
     def copyRandomList(self, head: Optional[Node]) -> Optional[Node]:
         if not head:
@@ -89,4 +88,3 @@ if __name__ == "__main__":
             
 # TC: O(N)
 # SC: O(N)
-
