@@ -13,3 +13,6 @@ for q in queries:
     petya += n - seen[q]
 
 print(vasya, petya)
+
+# TC: O(n + m) where n, m is the number of values in our array and m is the number of queries
+# SC: O(n), not including the input arrays: the dictionary to manage our values and their indices for quick lookup

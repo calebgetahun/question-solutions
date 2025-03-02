@@ -11,3 +11,6 @@ if __name__ == "__main__":
     n = int(input())
     values = list(map(int, input().split(" ")))
     ways_to_win(people=n, fingers=values)
+
+# TC: O(n) where n is the number of people in our game in order to sum the values of everyone hand
+# SC: O(1), not including input storage
