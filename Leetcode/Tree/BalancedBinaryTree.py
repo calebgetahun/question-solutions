@@ -28,6 +28,21 @@ class Solution:
         
         return max(left_height, right_height) + 1
     
+    def anotherIsBalanced(self, root: Optional[TreeNode]) -> bool:
+        def height(root):
+            if not root:
+                return True, 0
+            
+            left, left_h = height(root.left)
+            right, right_h = height(root.right)
+
+            if abs(left_h - right_h) > 1:
+                return False, -1
+            
+            return left and right, 1+ max(left_h, right_h)
+        
+        return height(root)[0]
+    
 
 if __name__ == "__main__":
     sol = Solution()
@@ -45,6 +60,7 @@ if __name__ == "__main__":
 
     root.right.right.right = TreeNode(5)
     print(sol.isBalanced(root))
+    print(sol.anotherIsBalanced(root))
 
 # TC: O(N)
-# SC: O(N)
+# SC: O(N) for first approach, O(h) for second approach
