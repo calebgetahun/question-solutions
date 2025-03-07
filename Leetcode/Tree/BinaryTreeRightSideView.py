@@ -1,5 +1,5 @@
 from typing import Optional, List
-from data_structures.TreeNode import GenerateBinaryTree, TreeNode
+from data_structures.BinaryTree import *
 
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
@@ -26,5 +26,6 @@ class Solution:
 
 if __name__ == "__main__":
     sol = Solution()
-    tree_root = GenerateBinaryTree.GenericBinaryTree().root
-    print(sol.rightSideView(tree_root))
+    tree = BinaryTree()
+    tree.generate_random_tree()
+    print(sol.rightSideView(tree.root))

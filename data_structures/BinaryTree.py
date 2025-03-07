@@ -19,7 +19,7 @@ class BinaryTree():
         self.root.right.left = TreeNode(next(nums))
         self.root.right.right = TreeNode(next(nums))
 
-    def printTreeLevelOrderTraversal(self):
+    def print_tree_level_order_traversal(self):
         q = [self.root]
         curr_level = 0
 
@@ -37,10 +37,15 @@ class BinaryTree():
                 print(curr.val, end=" ")
             print()
             curr_level += 1
-        
-        return
+
+    def pre_order(self, root):
+        if root:
+            print(root.val)
+            self.pre_order(root.left)
+            self.pre_order(root.right)
 
 if __name__ == "__main__":
     tree = BinaryTree()
     tree.generate_random_tree()
-    tree.printTreeLevelOrderTraversal()
+    tree.print_tree_level_order_traversal()
+    tree.pre_order(tree.root)

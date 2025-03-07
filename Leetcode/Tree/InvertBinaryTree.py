@@ -1,10 +1,5 @@
 from typing import Optional
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+from data_structures.BinaryTree import *
 
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
@@ -19,28 +14,19 @@ class Solution:
 def preorder(root: TreeNode):
     if not root:
         return
-    print(root.val)
+    print(root.val, end=" ")
     preorder(root.left)
     preorder(root.right)
 
 if __name__ == "__main__":
-    root = TreeNode(1)
-    left = TreeNode(2)
-    right = TreeNode(3)
-    left_left = TreeNode(4)
-    left_right = TreeNode(5)
-    right_left = TreeNode(6)
-    right_right = TreeNode(7)
-    root.left = left
-    root.right = right
-    root.left.left = left_left
-    root.left.right = left_right
-    root.right.left = right_left
-    root.right.right = right_right
+    tree = BinaryTree()
+    tree.generate_random_tree()
+    tree.pre_order(tree.root)
+    print()
     
     sol = Solution()
-    inverted_root = sol.invertTree(root)
-    preorder(inverted_root)
+    inverted_root = sol.invertTree(tree.root)
+    tree.pre_order(tree.root)
 
 # TC: O(N)
 # SC: O(h), height of tree
