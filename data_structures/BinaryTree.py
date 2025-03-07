@@ -1,16 +1,17 @@
+
+# Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
 
-class GenericBinaryTree():
-    def __init__(self, root_val=0):
+class BinaryTree():
+    def __init__(self, root_val=1):
         self.root = TreeNode(val=root_val)
-        self.generate_random_tree()
 
     def generate_random_tree(self):
-        nums = iter(range(1, 10))
+        nums = iter(range(2, 10))
         self.root.left = TreeNode(next(nums))
         self.root.right = TreeNode(next(nums))
         self.root.left.left = TreeNode(next(nums))
@@ -40,6 +41,6 @@ class GenericBinaryTree():
         return
 
 if __name__ == "__main__":
-    tree = GenericBinaryTree()
+    tree = BinaryTree()
     tree.generate_random_tree()
     tree.printTreeLevelOrderTraversal()

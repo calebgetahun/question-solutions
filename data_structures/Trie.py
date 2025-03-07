@@ -52,3 +52,5 @@ if __name__ == "__main__":
 
 # TC: O(N) for all operations, where N is the number of characters in the particular string
 # SC: O(N), could be considered O(1) since we have a fixed number of characters
+
+# Leetcode question: Implement Trie

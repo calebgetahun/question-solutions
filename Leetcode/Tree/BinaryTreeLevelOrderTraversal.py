@@ -1,11 +1,6 @@
 from typing import Optional, List
+from data_structures.BinaryTree import *
 
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root:
@@ -35,18 +30,7 @@ class Solution:
 
 if __name__ == "__main__":
     sol = Solution()
-    root = TreeNode(4)
-    left = TreeNode(2)
-    right = TreeNode(6)
-    left_left = TreeNode(1)
-    left_right = TreeNode(3)
-    right_left = TreeNode(5)
-    right_right = TreeNode(7)
-    root.left = left
-    root.right = right
-    root.left.left = left_left
-    root.left.right = left_right
-    root.right.left = right_left
-    root.right.right = right_right
+    tree = BinaryTree()
+    tree.generate_random_tree()
 
-    print(sol.levelOrder(root))
+    print(sol.levelOrder(tree.root))

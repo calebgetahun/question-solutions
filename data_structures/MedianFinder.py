@@ -1,7 +1,6 @@
 import heapq
 
 class MedianFinder:
-
     def __init__(self):
         #two heaps, one min and one max. if the val to be added is greater than the median, it geos to the min heap. if not, it goes to the max heap. If either heap gets to be greater than 1 difference, shift the numbers around by popping and adding to other heaps. maintain min and max property and median will either be the mean of the two top values or the one that has a length greater than the other (k + 1) length
         self.min_heap = []

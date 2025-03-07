@@ -36,8 +36,6 @@ class LRUCache:
         self.removeNodeFromList(node)
         self.insertNodeAtHead(node)
 
-        # print("get done")
-        # self.printList()
         return self.cache[key].val
 
     def put(self, key: int, value: int) -> None:
@@ -56,9 +54,6 @@ class LRUCache:
             new_node = Node(key, value)
             self.cache[key] = new_node
             self.insertNodeAtHead(new_node)
-        
-        # print("put done")
-        # self.printList()
     
     def printList(self):
         curr = self.head.next
@@ -68,11 +63,6 @@ class LRUCache:
             curr = curr.next
         
         print(f"least recent: to be evicted when capacity of {self.capacity}")
-
-# Your LRUCache object will be instantiated and called as such:
-# obj = LRUCache(capacity)
-# param_1 = obj.get(key)
-# obj.put(key,value)
 
 if __name__ == "__main__":
     lru = LRUCache(3)
@@ -88,4 +78,8 @@ if __name__ == "__main__":
 
 # TC: O(1) for get and put operations 
 # SC: O(N) for the number of key, value pairs
-    
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
