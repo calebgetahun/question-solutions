@@ -28,9 +28,33 @@ class Solution:
 
         return traversal
 
+    def levelOrderShorter(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return []
+        traversal = []
+
+        q = [root]
+
+        while q:
+            curr_level = []
+            for _ in range(len(q)):
+                popped = q.pop(0)
+                curr_level.append(popped.val)
+                if popped.left:
+                    q.append(popped.left)
+                if popped.right:
+                    q.append(popped.right)
+            traversal.append(curr_level)
+        return traversal
+    
+
 if __name__ == "__main__":
     sol = Solution()
     tree = BinaryTree()
     tree.generate_random_tree()
 
     print(sol.levelOrder(tree.root))
+    print(sol.levelOrderShorter(tree.root))
+
+# TC: O(N)
+# SC: O(N)
