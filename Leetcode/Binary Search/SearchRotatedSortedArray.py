@@ -37,12 +37,46 @@ class Solution:
         # return -1 if no value has been found to match target
         return -1
 
+    def searchOnePass(self, nums: List[int], target: int) -> int:
+        left, right = 0, len(nums) - 1
+
+        while left <= right:
+            mid = left + ((right-left)//2)
+            if nums[mid] == target:
+                return mid
+
+            if nums[left] > nums[right]:
+                #rotated
+                if nums[mid] > nums[right]:
+                    #rotated on right side
+                    if target > nums[mid] or target < nums[left]:
+                        left = mid + 1
+                    else:
+                        right = mid - 1
+
+                else:
+                    #rotated on left side
+                    if target < nums[mid] or target > nums[right]:
+                        right = mid - 1
+                    else:
+                        left = mid + 1
+
+            else:
+                #not rotated
+                if nums[mid] > target:
+                    right = mid - 1
+                else:
+                    left = mid + 1
+        
+        return -1
+
 if __name__ == "__main__":
     sol = Solution()
     arr = [4,5,6,7,0,1,2]
     target = 3, 5, 0
     for val in target:
         print(sol.search(arr, val))
+        print(sol.searchOnePass(arr, val))
 
 # TC: O(logn)
 # SC: O(1)

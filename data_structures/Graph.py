@@ -43,7 +43,49 @@ class AdjacencyList:
 		for neighbor in self.graph[start]:
 			if neighbor not in visited:
 				self.DFS(neighbor, visited)
+				
+	def findShortestPath(self, start, end):
+		visited = {start}
+		q = deque()
+		q.append((start, []))
+		
+		while q:
+			curr, curr_path = q.popleft()
+			if curr == end:
+				return curr_path + [curr]
+			
+			for neighbor in self.graph[curr]:
+				if neighbor not in visited:
+					q.append((neighbor, curr_path + [curr]))
+					visited.add(neighbor)
+		return ["path doesn't exist"]
+	
+	def checkIfCycleExistsDirectedGraph(self):
+		state = [0] * self.numberOfNodes
+		
+		def dfs(node):
+			if state[node] == 1:
+				return True
+			if state[node] == 2:
+				return False
 
+			state[node] = 1
+			
+			for neighbor in self.graph[node]:
+				if dfs(neighbor):
+					return True
+				
+			state[node] = 2
+			
+			return False
+		
+		for i in range(self.numberOfNodes):
+			if state[i] == 0:
+				if dfs(i):
+					return True
+		
+		return False
+			
 class AdjacencyMatrix:
 	def __init__(self, numberOfNodes, isDirected=False):
 		self.graph = [[0] * numberOfNodes for _ in range(numberOfNodes)]
@@ -80,13 +122,11 @@ class EgdeListGraph():
 			print(f"weight: {weight}, start: {start}, end: {end}")
 	
 def main():
-	graph = AdjacencyList(4, False)
+	graph = AdjacencyList(5, True)
 	graph.addEdge(0, 1)
-	graph.addEdge(3, 1)
-	graph.addEdge(0, 3)
-	graph.addEdge(2, 1)
-	graph.addEdge(2, 3)
-	graph.addEdge(0, 2)
+	graph.addEdge(2, 0)
+	graph.addEdge(3, 4)
+	graph.addEdge(1, 2)
 	graph.printGraph()
 	
 	matrix = AdjacencyMatrix(4)
@@ -96,7 +136,7 @@ def main():
 	matrix.addEdge(2, 1)
 	matrix.addEdge(2, 3)
 	matrix.addEdge(0, 2)
-	matrix.printMatrix()
+	# matrix.printMatrix()
 	
 	edgeList = EgdeListGraph()
 	edgeList.addEdge(0, 1, 7)
@@ -105,9 +145,12 @@ def main():
 	edgeList.addEdge(2, 1, 6)
 	edgeList.addEdge(2, 3, 2)
 	edgeList.addEdge(0, 2, 1)
-	edgeList.printEdges()
-	graph.BFS(0)
+	# edgeList.printEdges()
 	
-	graph.DFS(0)
+	# graph.BFS(0)
+	# graph.DFS(0)
+	# print(graph.findShortestPath(0, 3))
+	print(graph.checkIfCycleExistsDirectedGraph())
+	
 if __name__ == "__main__":
 	main()
