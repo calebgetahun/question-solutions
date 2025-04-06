@@ -4,6 +4,16 @@ class ListNode:
         self.val = val
         self.next = next
 
+    def createList(self, arr: list):
+        head = ListNode(-1)
+        curr = head
+        for node in arr:
+            temp = ListNode(node)
+            curr.next = temp
+            curr = curr.next
+        
+        return head.next
+
 class DoublyListNode:
     def __init__(self, value, prev=None, next=None):
         self.val = value
