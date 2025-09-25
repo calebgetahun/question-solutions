@@ -1,7 +1,7 @@
-class TrieNode():
+class TrieNode:
     def __init__(self):
-        self.children = [None] * 26
-        self.is_word = False
+        self.chars = [None] * 26 #one for each letter
+        self.end_word = False
 
 class Trie:
     def __init__(self):
@@ -10,35 +10,30 @@ class Trie:
     def insert(self, word: str) -> None:
         curr = self.root
         for char in word:
-            ind = ord(char) - ord('a')
-            if curr.children[ind]:
-                curr = curr.children[ind]
-            else:
-                new_node = TrieNode()
-                curr.children[ind] = new_node
-                curr = new_node
-        curr.is_word = True
+            index = ord(char) - ord('a')
+            if not curr.chars[index]:
+                curr.chars[index] = TrieNode()
+
+            curr = curr.chars[index]
+        curr.end_word = True
 
     def search(self, word: str) -> bool:
         curr = self.root
         for char in word:
-            ind = ord(char) - ord('a')
-            if curr.children[ind]:
-                curr = curr.children[ind]
-            else:
+            index = ord(char) - ord('a')
+            if not curr.chars[index]:
                 return False
-        if curr.is_word:
-            return True
-        return False
+            curr = curr.chars[index]
+
+        return curr.end_word
 
     def startsWith(self, prefix: str) -> bool:
         curr = self.root
         for char in prefix:
-            ind = ord(char) - ord('a')
-            if curr.children[ind]:
-                curr = curr.children[ind]
-            else:
+            index = ord(char) - ord('a')
+            if not curr.chars[index]:
                 return False
+            curr = curr.chars[index]
         return True
 
 if __name__ == "__main__":
